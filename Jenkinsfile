@@ -17,5 +17,12 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        stage('docker build') {
+            sh 'docker build -t hue:v1 .'
+        }
     }
+}
+def gitVersion() {
+    def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
+    return commitHash
 }
