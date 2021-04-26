@@ -5,6 +5,10 @@ pipeline {
         maven 'maven3'
     }
 
+    environment {
+        DOCKER_TAG = "getVersion()"
+    }
+
     stages{
         stage('git checkout') {
             steps{
@@ -19,12 +23,12 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                sh 'docker build -t hue:v1 .'
+                sh 'docker build -t mahi9618/hueapp:${DOCKER_TAG} .'
             }
         }
     }
 }
-def gitVersion() {
+def getVersion() {
     def commitHash = sh label: '', returnStdout: true, script: 'git rev-parse --short HEAD'
     return commitHash
 }
