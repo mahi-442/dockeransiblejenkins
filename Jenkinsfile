@@ -26,6 +26,15 @@ pipeline {
                 sh 'docker build . -t mahi9618/hueapp:${DOCKER_TAG}'
             }
         }
+        stage('dockerhub push') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerHubPwd')]) {
+                    // some block
+                    sh 'docker login -u mahi9618 -p ${dockerHubPwd}'
+                }
+                sh 'docker push mahi9618/hueapp:${DOCKER_TAG}'
+            }
+        }
     }
 }
 def getVersion() {
