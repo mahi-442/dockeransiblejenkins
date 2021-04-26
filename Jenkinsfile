@@ -35,6 +35,11 @@ pipeline {
                 sh 'docker push mahi9618/hueapp:${DOCKER_TAG}'
             }
         }
+        stage('docker deploy') {
+            steps {
+                ansiblePlaybook credentialsId: 'dev-server', disableHostKeyChecking: true, extras: '-e DOCKER_TAG=${DOCKER_TAG}', installation: 'ansible', inventory: 'dev-inv', playbook: 'deploy-docker.yml'
+            }
+        }
     }
 }
 def getVersion() {
