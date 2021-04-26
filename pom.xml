@@ -15,19 +15,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-<distributionManagement>
-		 <snapshotRepository>
-		    <id>nexusRepo</id>
-		    <url>http://3.21.126.189:8081/repository/hue-snapshot/</url>
-		 </snapshotRepository>
-		
-		<repository>
-		    <id>nexusRepo</id>
-		    <url>http://3.21.126.189:8081/repository/hue-release/</url>
-		</repository>
-</distributionManagement>
-
   <build>
     <finalName>hue</finalName>
   </build>
