@@ -18,7 +18,9 @@ pipeline {
             }
         }
         stage('docker build') {
-            sh 'docker build -t hue:v1 .'
+            steps {
+                sh 'docker build -t hue:v1 .'
+            }
         }
     }
 }
