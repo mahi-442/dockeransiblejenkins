@@ -23,7 +23,7 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                sh 'docker build -t mahi9618/hueapp:${DOCKER_TAG} .'
+                sh 'docker build . -t mahi9618/hueapp:${DOCKER_TAG}'
             }
         }
     }
